@@ -1,0 +1,13 @@
+# Security
+.env
+config.local.php
+connect.php
+
+# Dependencies
+/vendor/
+
+# OS/IDE metadata
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
