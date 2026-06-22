@@ -8,7 +8,8 @@ if (!isset($_SESSION['login_time'])) {
 } else {
     if (time() - $_SESSION['login_time'] > SESSION_TIMEOUT) {
         session_destroy();
-        header("Location: /Timetable_genrator_system/student/login.php?expired=1");
+        $base = dirname(dirname($_SERVER['PHP_SELF']));
+        header("Location: $base/student/login.php?expired=1");
         exit();
     }
     $_SESSION['login_time'] = time();
@@ -20,7 +21,8 @@ function isStudentLoggedIn() {
 
 function requireStudentLogin() {
     if (!isStudentLoggedIn()) {
-        header("Location: /Timetable_genrator_system/student/login.php");
+        $base = dirname(dirname($_SERVER['PHP_SELF']));
+        header("Location: $base/student/login.php");
         exit();
     }
 }
@@ -43,7 +45,8 @@ function getLevelId() {
 
 function studentLogout() {
     session_destroy();
-    header("Location: /Timetable_genrator_system/student/login.php");
+    $base = dirname(dirname($_SERVER['PHP_SELF']));
+    header("Location: $base/student/login.php");
     exit();
 }
 ?>

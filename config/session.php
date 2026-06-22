@@ -8,7 +8,7 @@ if (!isset($_SESSION['login_time'])) {
 } else {
     if (time() - $_SESSION['login_time'] > SESSION_TIMEOUT) {
         session_destroy();
-        header("Location: /Timetable_genrator_system/login.php?expired=1");
+        header("Location: " . $_SERVER['REQUEST_SCHEME'] . "://" . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF'], 3) . "/login.php?expired=1");
         exit();
     }
     $_SESSION['login_time'] = time();
@@ -20,7 +20,8 @@ function isAdminLoggedIn() {
 
 function requireAdmin() {
     if (!isAdminLoggedIn()) {
-        header("Location: /Timetable_genrator_system/login.php");
+        $base = dirname($_SERVER['PHP_SELF'], 2);
+        header("Location: $base/login.php");
         exit();
     }
 }
@@ -35,7 +36,8 @@ function getUserName() {
 
 function logout() {
     session_destroy();
-    header("Location: /Timetable_genrator_system/login.php");
+    $base = dirname($_SERVER['PHP_SELF'], 2);
+    header("Location: $base/login.php");
     exit();
 }
 ?>

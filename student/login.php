@@ -240,9 +240,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     <div class="navbar">
         <h2>ATGS - Al-Qalam University Katsina</h2>
         <div>
-            <a href="index.php">Home</a>
-            <a href="register.php">Register</a>
-            <a href="login.php">Admin</a>
+            <a href="../index.php">Home</a>
+            <a href="../register.php">Register</a>
+            <a href="login.php">Student Login</a>
         </div>
     </div>
     
